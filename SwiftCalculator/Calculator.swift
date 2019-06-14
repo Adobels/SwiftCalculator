@@ -59,6 +59,7 @@ public class Calculator {
         left = 0
         input.reset()
         currentComponent = .input
+        selectedOperation = nil
     }
     
     enum Operation {

@@ -127,6 +127,43 @@ class kalkonTests: XCTestCase {
         XCTAssertEqual(kalkon.display, "2 222")
     }
     
+    func testEqual() {
+        let kalkon = Calculator()
+        kalkon.tapZero()
+        kalkon.tapDecimalSpeparator()
+        kalkon.tapTwo()
+        kalkon.tapEqual()
+        XCTAssertEqual(kalkon.display, "0.2")
+    }
+    
+    func testPlus() {
+        let kalkon = Calculator()
+        kalkon.tapZero()
+        kalkon.tapDecimalSpeparator()
+        kalkon.tapTwo()
+        kalkon.tapPlus()
+        XCTAssertEqual(kalkon.display, "0.2")
+    }
+    
+    func testMinus() {
+        let kalkon = Calculator()
+        kalkon.tapZero()
+        kalkon.tapDecimalSpeparator()
+        kalkon.tapTwo()
+        kalkon.tapMinus()
+        XCTAssertEqual(kalkon.display, "0.2")
+    }
+    
+    func testMultiply2() {
+        let kalkon = Calculator()
+        kalkon.tapAc()
+        kalkon.tapZero()
+        kalkon.tapDecimalSpeparator()
+        kalkon.tapTwo()
+        kalkon.tapMultiply()
+        XCTAssertEqual(kalkon.display, "0.2")
+    }
+    
     func testMultiply() {
         let kalkon = Calculator()
         kalkon.tapTwo()
@@ -134,6 +171,12 @@ class kalkonTests: XCTestCase {
         kalkon.tapFive()
         kalkon.tapEqual()
         XCTAssertEqual(kalkon.display, "10")
+        kalkon.tapAc()
+        kalkon.tapZero()
+        kalkon.tapDecimalSpeparator()
+        kalkon.tapTwo()
+        kalkon.tapMultiply()
+        XCTAssertEqual(kalkon.display, "0.2")
     }
     
     func testDivide() {
@@ -143,6 +186,12 @@ class kalkonTests: XCTestCase {
         kalkon.tapFive()
         kalkon.tapEqual()
         XCTAssertEqual(kalkon.display, "1")
+        kalkon.tapAc()
+        kalkon.tapZero()
+        kalkon.tapDecimalSpeparator()
+        kalkon.tapTwo()
+        kalkon.tapDivide()
+        XCTAssertEqual(kalkon.display, "0.2")
     }
     
     func testInput() {
@@ -266,5 +315,6 @@ class kalkonTests: XCTestCase {
         XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "2"), "2")
         XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "="), "246 913 578 =")
     }
+    
 }
 

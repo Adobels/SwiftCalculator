@@ -10,6 +10,11 @@
 		FFF9EC1722B3839200C549D2 /* SwiftCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF9EC0D22B3839200C549D2 /* SwiftCalculator.framework */; };
 		FFF9EC1C22B3839200C549D2 /* SwiftCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF9EC1B22B3839200C549D2 /* SwiftCalculatorTests.swift */; };
 		FFF9EC1E22B3839200C549D2 /* SwiftCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = FFF9EC1022B3839200C549D2 /* SwiftCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFF9EC2822B3847900C549D2 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF9EC2722B3847900C549D2 /* Calculator.swift */; };
+		FFF9EC2922B3847900C549D2 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF9EC2722B3847900C549D2 /* Calculator.swift */; };
+		FFF9EC2B22B3849300C549D2 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF9EC2A22B3849300C549D2 /* Input.swift */; };
+		FFF9EC2C22B3849300C549D2 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF9EC2A22B3849300C549D2 /* Input.swift */; };
+		FFF9EC2F22B3863E00C549D2 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF9EC2D22B3863E00C549D2 /* CalculatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,9 @@
 		FFF9EC1622B3839200C549D2 /* SwiftCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFF9EC1B22B3839200C549D2 /* SwiftCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCalculatorTests.swift; sourceTree = "<group>"; };
 		FFF9EC1D22B3839200C549D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFF9EC2722B3847900C549D2 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		FFF9EC2A22B3849300C549D2 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		FFF9EC2D22B3863E00C549D2 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				FFF9EC1022B3839200C549D2 /* SwiftCalculator.h */,
+				FFF9EC2722B3847900C549D2 /* Calculator.swift */,
+				FFF9EC2A22B3849300C549D2 /* Input.swift */,
 				FFF9EC1122B3839200C549D2 /* Info.plist */,
 			);
 			path = SwiftCalculator;
@@ -81,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				FFF9EC1B22B3839200C549D2 /* SwiftCalculatorTests.swift */,
+				FFF9EC2D22B3863E00C549D2 /* CalculatorTests.swift */,
 				FFF9EC1D22B3839200C549D2 /* Info.plist */,
 			);
 			path = SwiftCalculatorTests;
@@ -148,6 +159,7 @@
 				TargetAttributes = {
 					FFF9EC0C22B3839200C549D2 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					FFF9EC1522B3839200C549D2 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -194,6 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF9EC2B22B3849300C549D2 /* Input.swift in Sources */,
+				FFF9EC2822B3847900C549D2 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +215,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF9EC2C22B3849300C549D2 /* Input.swift in Sources */,
+				FFF9EC2F22B3863E00C549D2 /* CalculatorTests.swift in Sources */,
 				FFF9EC1C22B3839200C549D2 /* SwiftCalculatorTests.swift in Sources */,
+				FFF9EC2922B3847900C549D2 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +358,7 @@
 		FFF9EC2222B3839200C549D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +376,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.blazejsleboda.SwiftCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +385,7 @@
 		FFF9EC2322B3839200C549D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +411,7 @@
 		FFF9EC2522B3839200C549D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43VBDTY4E3;
 				INFOPLIST_FILE = SwiftCalculatorTests/Info.plist;
@@ -409,6 +430,7 @@
 		FFF9EC2622B3839200C549D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 43VBDTY4E3;
 				INFOPLIST_FILE = SwiftCalculatorTests/Info.plist;

@@ -51,7 +51,7 @@ public class Calculator {
     
     private var currentComponent = Component.input
     
-    var selectedOperation: Operation?
+    public var selectedOperation: Operation?
     
     private var left: NSDecimalNumber = NSDecimalNumber(0)
     
@@ -62,8 +62,8 @@ public class Calculator {
         selectedOperation = nil
     }
     
-    enum Operation {
-        var rawValue: String {
+    public enum Operation {
+        public var rawValue: String {
             switch self {
             case .plus: return "+"
             case .minus: return "-"

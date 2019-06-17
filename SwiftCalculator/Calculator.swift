@@ -45,11 +45,11 @@ public class Calculator {
     
     public var input: Input = Input()
     
-    private enum Component {
+    public enum Component {
         case left, input
     }
     
-    private var currentComponent = Component.input
+    public var currentComponent = Component.input
     
     public var selectedOperation: Operation?
     

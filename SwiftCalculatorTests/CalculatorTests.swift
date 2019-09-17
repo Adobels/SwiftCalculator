@@ -315,6 +315,42 @@ class kalkonTests: XCTestCase {
         XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "2"), "2")
         XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "="), "246 913 578 =")
     }
+ 
+    func testDivideFloatingPoint() {
+        let kalkon = Calculator()
+        kalkon.tapSeven()
+        kalkon.tapDivide()
+        kalkon.tapSix()
+        kalkon.tapSix()
+        kalkon.tapEqual()
+        XCTAssertEqual(kalkon.display, "0.1060606")
+    }
+    
+    func testDivideFloatingPoint2() {
+        let kalkon = Calculator()
+        kalkon.tapSeven()
+        kalkon.tapDivide()
+        kalkon.tapNine()
+        kalkon.tapNine()
+        kalkon.tapNine()
+        kalkon.tapEqual()
+        XCTAssertEqual(kalkon.display, "0.007007")
+    }
+    
+    func testFloatingPointChangeMagnitude() {
+        let kalkon = Calculator()
+        kalkon.tapSeven()
+        kalkon.tapDecimalSpeparator()
+        kalkon.tapSix()
+        kalkon.tapSeven()
+        kalkon.tapTwo()
+        kalkon.tapThree()
+        kalkon.tapMultiply()
+        kalkon.tapOne()
+        kalkon.tapZero()
+        kalkon.tapEqual()
+        XCTAssertEqual(kalkon.display, "76.723")
+    }
     
 }
 

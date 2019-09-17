@@ -53,7 +53,7 @@ public class Calculator {
     
     public var selectedOperation: Operation?
     
-    private var left: NSDecimalNumber = NSDecimalNumber(0)
+    open var left: NSDecimalNumber = NSDecimalNumber(0)
     
     private func reset() {
         left = 0
@@ -165,8 +165,13 @@ public class Calculator {
         } else if selectedOperation == .multiply {
             left = left.multiplying(by: decimalInput)
         } else if selectedOperation == .divide {
-            let dnh = NSDecimalNumberHandler(roundingMode: .plain, scale: 1, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
-            left = left.dividing(by: decimalInput, withBehavior: dnh)
+            let dnh = NSDecimalNumberHandler(roundingMode: .down, scale: 1, raiseOnExactness: false, raiseOnOverflow: false, raiseOnUnderflow: false, raiseOnDivideByZero: false)
+            //left = left.dividing(by: decimalInput, withBehavior: dnh)
+            if decimalInput.doubleValue.isZero {
+                left = left.dividing(by: decimalInput, withBehavior: dnh)
+            } else {
+                left = left.dividing(by: decimalInput)
+            }
         }
     }
     

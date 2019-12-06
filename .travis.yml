@@ -1,2 +1,7 @@
-os: osx
-language: swift
+language:
+  - swift
+osx_image: xcode11.2
+script:
+  - xcodebuild -scheme SwiftCalculator -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=13.2' build test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

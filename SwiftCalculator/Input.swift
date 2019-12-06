@@ -10,6 +10,10 @@ import Foundation
 
 public class Input {
     
+    // Constants
+    let characterDot = "."
+    
+    // Variables
     var mantisa: String = "0"
     var hasExponent: Bool = false
     var exponent: String = ""
@@ -40,7 +44,7 @@ public class Input {
             }
         }
     }
-    let characterDot = "."
+    
     public var string: String {
         var str: String
         

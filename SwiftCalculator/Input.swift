@@ -25,7 +25,7 @@ public class Input {
         nf.roundingMode = .halfUp
         nf.usesGroupingSeparator = true
         nf.nilSymbol = "Error"
-        nf.decimalSeparator = "."
+        nf.decimalSeparator = characterDot
         nf.groupingSeparator = " "
     }
     
@@ -40,7 +40,7 @@ public class Input {
             }
         }
     }
-    
+    let characterDot = "."
     public var string: String {
         var str: String
         
@@ -56,10 +56,10 @@ public class Input {
         if hasExponent {
             
             if exponent.count == 0 {
-                str.append(".")
+                str.append(characterDot)
             } else {
                 if Int16(exponent) == 0 {
-                    str.append(".")
+                    str.append(characterDot)
                     str.append(exponent)
                 }
             }
@@ -91,7 +91,7 @@ public class Input {
         for item in string.enumerated() {
             if item.element == "-" {
                 isNegative = true
-            } else if item.element == "." {
+            } else if String(item.element) == characterDot {
                 hasExponent = true
             } else {
                 append(String(item.element))

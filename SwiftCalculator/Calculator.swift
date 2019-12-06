@@ -26,13 +26,10 @@ public class Calculator {
     }
     
     public var display: String {
-        
         if currentComponent == .left {
             return nf.string(from: left)!
-        } else {
-            return input.string
         }
-        
+        return input.string
     }
     
     private func tapDigit(digit: Button) {
@@ -51,7 +48,7 @@ public class Calculator {
     
     public var currentComponent = Component.input
     
-    public var selectedOperation: Operation?
+    public var selectedOperation: MathematicalOperand?
     
     open var left: NSDecimalNumber = NSDecimalNumber(0)
     
@@ -62,21 +59,12 @@ public class Calculator {
         selectedOperation = nil
     }
     
-    public enum Operation {
-        public var rawValue: String {
-            switch self {
-            case .plus: return "+"
-            case .minus: return "-"
-            case .equal: return "="
-            case .multiply: return "x"
-            case .divide: return "/"
-            }
-        }
-        
-        
+    public enum MathematicalOperand {
         case plus, minus, equal, multiply, divide
         
-        init?(rawValue: String) {
+        typealias RawValue = String
+        
+        public init?(rawValue: String) {
             switch rawValue {
             case "+": self = .plus
             case "-": self = .minus
@@ -88,7 +76,15 @@ public class Calculator {
             }
         }
         
-        typealias RawValue = String
+        public var rawValue: String {
+            switch self {
+            case .plus: return "+"
+            case .minus: return "-"
+            case .equal: return "="
+            case .multiply: return "x"
+            case .divide: return "/"
+            }
+        }
     }
     
     enum Button: RawRepresentable {
@@ -356,12 +352,8 @@ public class Calculator {
             } else {
                 return display
             }
-            
         } else {
             return display
         }
-        
     }
-    
-    
 }

@@ -8,7 +8,7 @@
 
 import XCTest
 
-class kalkonTests: XCTestCase {
+class KalkonTests: XCTestCase {
     
     func testKalkonInit() {
         let kalkon = Calculator()
@@ -39,6 +39,16 @@ class kalkonTests: XCTestCase {
         XCTAssertEqual(kalkon.display, "-1")
         kalkon.tapEqual()
         XCTAssertEqual(kalkon.display, "-1")
+    }
+    
+    func testSignAfterDidOperation() {
+        let kalkon = Calculator()
+        kalkon.tapOne()
+        kalkon.tapPlus()
+        kalkon.tapThree()
+        kalkon.tapEqual()
+        kalkon.tapSign()
+        XCTAssertEqual(kalkon.display, "-4")
     }
     
     func testNumericButtons() {

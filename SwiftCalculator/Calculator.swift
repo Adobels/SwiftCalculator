@@ -300,7 +300,8 @@ public class Calculator {
         currentComponent = .input
     }
     
-    @discardableResult public func calculatorButtonWithTitleClicked(text: String) -> String {
+    @discardableResult
+    public func tapButtonWithTitle(_ text: String) -> String {
         guard let button = Button(rawValue: text) else {
             return ""
         }

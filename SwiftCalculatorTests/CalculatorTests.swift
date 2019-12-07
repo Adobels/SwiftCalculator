@@ -362,5 +362,51 @@ class KalkonTests: XCTestCase {
         XCTAssertEqual(kalkon.display, "76.723")
     }
     
+    func testCalculatorButtonWithTitleClicked() {
+        let kalkon = Calculator()
+        kalkon.calculatorButtonWithTitleClicked(text: "1")
+        XCTAssertEqual(kalkon.display, "1")
+        kalkon.calculatorButtonWithTitleClicked(text: "+")
+        XCTAssertEqual(kalkon.display, "1")
+        kalkon.calculatorButtonWithTitleClicked(text: "2")
+        XCTAssertEqual(kalkon.display, "2")
+        kalkon.calculatorButtonWithTitleClicked(text: "=")
+        XCTAssertEqual(kalkon.display, "3")
+    }
+    func testCalculatorButtonWithWronkTitleClicked() {
+        let kalkon = Calculator()
+        let result = kalkon.calculatorButtonWithTitleClicked(text: "k")
+        XCTAssertTrue(result.isEmpty)
+    }
+    
+    func testCalculatorButtonWithTitleSign() {
+        let kalkon = Calculator()
+        kalkon.calculatorButtonWithTitleClicked(text: "1")
+        XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "+/-"), "-1")
+    }
+    func testCalculatorButtonWithTitleDivide() {
+        let kalkon = Calculator()
+        kalkon.calculatorButtonWithTitleClicked(text: "6")
+        kalkon.calculatorButtonWithTitleClicked(text: "/")
+        kalkon.calculatorButtonWithTitleClicked(text: "3")
+        XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "="), "2 =")
+    }
+    func testCalculatorButtonWithTitleMinus() {
+        let kalkon = Calculator()
+        kalkon.calculatorButtonWithTitleClicked(text: "5")
+        kalkon.calculatorButtonWithTitleClicked(text: "-")
+        kalkon.calculatorButtonWithTitleClicked(text: "1")
+        XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "="), "4 =")
+    }
+    func testCalculatorButtonWithTitlePercent() {
+        let kalkon = Calculator()
+        kalkon.calculatorButtonWithTitleClicked(text: "5")
+        kalkon.calculatorButtonWithTitleClicked(text: "0")
+        kalkon.calculatorButtonWithTitleClicked(text: "+")
+        kalkon.calculatorButtonWithTitleClicked(text: "1")
+        kalkon.calculatorButtonWithTitleClicked(text: "0")
+        kalkon.calculatorButtonWithTitleClicked(text: "%")
+        XCTAssertEqual(kalkon.calculatorButtonWithTitleClicked(text: "="), "55 =")
+    }
 }
 

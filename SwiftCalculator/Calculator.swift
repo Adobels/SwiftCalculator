@@ -142,9 +142,7 @@ public class Calculator {
                 return nil
             }
         }
-        
-        typealias RawValue = String
-        
+                
     }
     
     private func calculate() {
@@ -302,8 +300,10 @@ public class Calculator {
         currentComponent = .input
     }
     
-    public func calculatorButtonWithTitleClicked(text: String) -> String {
-        guard let button = Button(rawValue: text) else { return "" }
+    @discardableResult public func calculatorButtonWithTitleClicked(text: String) -> String {
+        guard let button = Button(rawValue: text) else {
+            return ""
+        }
         
         switch button {
         case .plus:
@@ -349,11 +349,9 @@ public class Calculator {
         if let someSelectedOperation = selectedOperation {
             if currentComponent == .left {
                 return String(format: "%@ %@", display, someSelectedOperation.rawValue)
-            } else {
-                return display
             }
-        } else {
             return display
         }
+        return display
     }
 }

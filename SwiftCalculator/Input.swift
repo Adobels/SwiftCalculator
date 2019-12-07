@@ -33,18 +33,7 @@ public class Input {
         nf.groupingSeparator = " "
     }
     
-    func append(_ character: String) {
-        if hasExponent {
-            exponent.append(character)
-        } else {
-            if mantisa == "0" {
-                mantisa = character
-            } else {
-                mantisa.append(character)
-            }
-        }
-    }
-    
+    // MARK: - Public Interface
     public var string: String {
         var str: String
         
@@ -88,6 +77,19 @@ public class Input {
             dNumber = dNumber.multiplying(by: -1)
         }
         return dNumber
+    }
+    
+    // MARK: - Private Interface
+    func append(_ character: String) {
+        if hasExponent {
+            exponent.append(character)
+        } else {
+            if mantisa == "0" {
+                mantisa = character
+            } else {
+                mantisa.append(character)
+            }
+        }
     }
     
     func setToString(_ string: String) {

@@ -10,6 +10,10 @@ import Foundation
 
 public class Input {
     
+    // Constants
+    let characterDot = "."
+    
+    // Variables
     var mantisa: String = "0"
     var hasExponent: Bool = false
     var exponent: String = ""
@@ -25,22 +29,11 @@ public class Input {
         nf.roundingMode = .halfUp
         nf.usesGroupingSeparator = true
         nf.nilSymbol = "Error"
-        nf.decimalSeparator = "."
+        nf.decimalSeparator = characterDot
         nf.groupingSeparator = " "
     }
     
-    func append(_ character: String) {
-        if hasExponent {
-            exponent.append(character)
-        } else {
-            if mantisa == "0" {
-                mantisa = character
-            } else {
-                mantisa.append(character)
-            }
-        }
-    }
-    
+    // MARK: - Public Interface
     public var string: String {
         var str: String
         
@@ -56,10 +49,10 @@ public class Input {
         if hasExponent {
             
             if exponent.count == 0 {
-                str.append(".")
+                str.append(characterDot)
             } else {
                 if Int16(exponent) == 0 {
-                    str.append(".")
+                    str.append(characterDot)
                     str.append(exponent)
                 }
             }
@@ -86,12 +79,25 @@ public class Input {
         return dNumber
     }
     
+    // MARK: - Private Interface
+    func append(_ character: String) {
+        if hasExponent {
+            exponent.append(character)
+        } else {
+            if mantisa == "0" {
+                mantisa = character
+            } else {
+                mantisa.append(character)
+            }
+        }
+    }
+    
     func setToString(_ string: String) {
         reset()
         for item in string.enumerated() {
             if item.element == "-" {
                 isNegative = true
-            } else if item.element == "." {
+            } else if String(item.element) == characterDot {
                 hasExponent = true
             } else {
                 append(String(item.element))

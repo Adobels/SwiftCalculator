@@ -354,7 +354,6 @@ public class Calculator {
                 
     }
     
-    dep
     private func tapDigit(digit: Button) {
         if currentComponent == .left {
             input.setToString(digit.rawValue)

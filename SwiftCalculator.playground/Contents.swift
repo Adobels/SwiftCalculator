@@ -5,7 +5,10 @@ var str = "Hello, playground"
 
 import SwiftCalculator
 
-let calculator = Calculator()
+let dn = NSDecimalNumber(mantissa: 20, exponent: -2, isNegative: true)
+
+print(dn)
+let calculator = Calculator(DefaultCalculatorKeyboard())
 calculator.tapSeven()
 calculator.tapDivide()
 calculator.tapSix()

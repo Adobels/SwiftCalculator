@@ -8,20 +8,24 @@
 
 import Foundation
 
-protocol KeyboardProtocol {
-    associatedtype T
-    func tap(_ button: KeyboardButton) -> T
+public protocol KeyboardProtocol {
+    var calculator: Calculator? { get set }
+    @discardableResult
+    func tap(_ button: KeyboardButton) -> KeyboardProtocol
+    @discardableResult
+    func tapButtonWithTitle(_ text: String) -> String
 }
 
 class DefaultCalculatorKeyboard: KeyboardProtocol {
-    private let calculator: Calculator
+    var calculator: Calculator?
     
-    public init(calculator: Calculator) {
-        self.calculator = calculator
+    public init() {
     }
     
     @discardableResult
-    public func tap(_ button: KeyboardButton) -> DefaultCalculatorKeyboard {
+    public func tap(_ button: KeyboardButton) -> KeyboardProtocol {
+        guard let calculator = calculator else { return self }
+        
         switch button {
         case .ac: calculator.tapAc()
         case .decimalSeparator: calculator.tapDecimalSpeparator()
@@ -45,6 +49,64 @@ class DefaultCalculatorKeyboard: KeyboardProtocol {
         }
         return self
     }
+    
+    @discardableResult
+    public func tapButtonWithTitle(_ text: String) -> String {
+        guard let calculator = calculator else { return "" }
+        guard let button = KeyboardButton(rawValue: text) else {
+            return ""
+        }
+        
+        switch button {
+        case .plus:
+            calculator.tapPlus()
+        case .equal:
+            calculator.tapEqual()
+        case .ac:
+            calculator.tapAc()
+        case .sign:
+            calculator.tapSign()
+        case .multiply:
+            calculator.tapMultiply()
+        case .divide:
+            calculator.tapDivide()
+        case .minus:
+            calculator.tapMinus()
+        case .percent:
+            calculator.tapPercent()
+        case .decimalSeparator:
+            calculator.tapDecimalSpeparator()
+        case .zero:
+            calculator.tapZero()
+        case .one:
+            calculator.tapOne()
+        case .two:
+            calculator.tapTwo()
+        case .three:
+            calculator.tapThree()
+        case .four:
+            calculator.tapFour()
+        case .five:
+            calculator.tapFive()
+        case .six:
+            calculator.tapSix()
+        case .seven:
+            calculator.tapSeven()
+        case .eight:
+            calculator.tapEight()
+        case .nine:
+            calculator.tapNine()
+        }
+        
+        if let someSelectedOperation = calculator.selectedOperation {
+            if calculator.currentComponent == .left {
+                return String(format: "%@ %@", calculator.display, someSelectedOperation.rawValue)
+            }
+            return calculator.display
+        }
+        return calculator.display
+    }
+
 }
 
 public enum KeyboardButton: String {

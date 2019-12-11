@@ -11,12 +11,13 @@ import XCTest
 class DefaultKeyboardTests: XCTestCase {
     
     func testDefaultKeyboardInit() {
-        XCTAssertNotNil(DefaultCalculatorKeyboard(calculator: Calculator()))
+        let calculator = Calculator(DefaultCalculatorKeyboard())
+        XCTAssertNotNil(calculator.keyboard)
     }
     
     func testKeyboardTapAllKeys() {
-        let keyboard = DefaultCalculatorKeyboard(calculator: Calculator())
-        keyboard
+        let calculator = Calculator(DefaultCalculatorKeyboard())
+        calculator.keyboard
             .tap(.plus)
             .tap(.minus)
             .tap(.equal)

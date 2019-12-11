@@ -7,6 +7,42 @@
 //
 
 import Foundation
+//
+//func ddd() {
+//    let d = NumberFormatter()
+//    d.string(from: <#T##NSNumber#>)
+//    let calculator = Calc()
+//    let keyboard = Keyboard()
+//    keyboard.six().five().plus().three().two().equal()
+//    calculator.two().five().divide().zero().point().zero().zero().one().equal()
+//    calculator.keyboard.tap(.zero).tap(.six).tap(.point).tap(.equal)
+//    calculator.keyboard.tap(.string("1.0000")).tap(.divide).tap(.string("0.0020")).tap(.equal)
+//    labelNumber.title = calculator.display.title
+//    labelTop.setOperation = calculator.display.operation
+//    labelEqual.title = calculator.display.isEqual
+//    calculator.display.string
+//    calculator.display.number
+//    calculator.isEqual
+//
+//
+//
+//
+//}
+
+//class DisplayFormatter {
+//    var number = NSDecimalNumber(value: 0)
+//    let nf: NumberFormatter = {
+//       let a = NumberFormatter()
+//        a.maximumFractionDigits = 7
+//        a.maximumIntegerDigits = 8
+//        a.alwaysShowsDecimalSeparator = true
+//        return a
+//    }()
+//
+//    var text: String {
+//
+//    }
+//}
 
 public class Calculator {
     
@@ -31,9 +67,11 @@ public class Calculator {
     
     open var left: NSDecimalNumber = NSDecimalNumber(0)
     
+    var keyboard: KeyboardProtocol
+    
     //MARK: - Public
     
-    public init() {
+    public init(_ keyboard: KeyboardProtocol) {
         nf = NumberFormatter()
         nf.numberStyle = .decimal
         nf.maximumFractionDigits = 7
@@ -44,6 +82,8 @@ public class Calculator {
         nf.nilSymbol = "Error"
         nf.decimalSeparator = "."
         nf.groupingSeparator = " "
+        self.keyboard = keyboard
+        self.keyboard.calculator = self
     }
     
     public func tapPlus() {
@@ -208,64 +248,6 @@ public class Calculator {
         input.reset()
         currentComponent = .input
         selectedOperation = nil
-    }
-    
-    //MARK - Move out of this class
-    
-    @discardableResult
-    public func tapButtonWithTitle(_ text: String) -> String {
-        guard let button = Button(rawValue: text) else {
-            return ""
-        }
-        
-        switch button {
-        case .plus:
-            tapPlus()
-        case .equal:
-            tapEqual()
-        case .ac:
-            tapAc()
-        case .sign:
-            tapSign()
-        case .multiply:
-            tapMultiply()
-        case .divide:
-            tapDivide()
-        case .minus:
-            tapMinus()
-        case .percent:
-            tapPercent()
-        case .decimalSeparator:
-            tapDecimalSpeparator()
-        case .zero:
-            tapZero()
-        case .one:
-            tapOne()
-        case .two:
-            tapTwo()
-        case .three:
-            tapThree()
-        case .four:
-            tapFour()
-        case .five:
-            tapFive()
-        case .six:
-            tapSix()
-        case .seven:
-            tapSeven()
-        case .eight:
-            tapEight()
-        case .nine:
-            tapNine()
-        }
-        
-        if let someSelectedOperation = selectedOperation {
-            if currentComponent == .left {
-                return String(format: "%@ %@", display, someSelectedOperation.rawValue)
-            }
-            return display
-        }
-        return display
     }
     
     public enum MathematicalOperand {

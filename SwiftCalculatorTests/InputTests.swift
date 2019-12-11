@@ -10,27 +10,27 @@ import XCTest
 
 class InputTests: XCTestCase {
     func testSetTextMinus() {
-        let calc = Calculator()
+        let calc = Calculator(DefaultCalculatorKeyboard())
         calc.input.setToString("-40")
         XCTAssertEqual(calc.input.string, "-40")
     }
     func testSetTextNotNumber() {
-        let calc = Calculator()
+        let calc = Calculator(DefaultCalculatorKeyboard())
         calc.input.setToString("-40.0k")
         XCTAssertEqual(calc.input.decimalNumber, 0)
     }
     func testSetTextMantisaOnlyNotNumber() {
-        let calc = Calculator()
+        let calc = Calculator(DefaultCalculatorKeyboard())
         calc.input.setToString("-4k")
         XCTAssertEqual(calc.input.decimalNumber, 0)
     }
     func testStringForWrongExponenta() {
-        let calc = Calculator()
+        let calc = Calculator(DefaultCalculatorKeyboard())
         calc.input.setToString("-40.0k")
         XCTAssertEqual(calc.input.string, "-0")
     }
     func testStringForWrongMantissa() {
-        let calc = Calculator()
+        let calc = Calculator(DefaultCalculatorKeyboard())
         calc.input.setToString("-4k")
         XCTAssertEqual(calc.input.string, "-0")
     }

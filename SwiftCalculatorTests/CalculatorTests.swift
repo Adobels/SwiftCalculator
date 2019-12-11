@@ -11,12 +11,13 @@ import XCTest
 class KalkonTests: XCTestCase {
     
     func testKalkonInit() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         XCTAssertEqual(kalkon.display, "0")
     }
     
+    
     func testKalkonAc() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapTwo()
         kalkon.tapTwo()
         kalkon.tapPlus()
@@ -27,8 +28,20 @@ class KalkonTests: XCTestCase {
         XCTAssertEqual(kalkon.display, "0")
     }
     
+    func testKalkonAc2() {
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        kalkon.keyboard.tap(.two)
+        kalkon.keyboard.tap(.two)
+        kalkon.keyboard.tap(.plus)
+        kalkon.keyboard.tap(.three)
+        kalkon.keyboard.tap(.equal)
+        
+        kalkon.keyboard.tap(.ac)
+        XCTAssertEqual(kalkon.display, "0")
+    }
+    
     func testSign() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapSign()
         XCTAssertEqual(kalkon.display, "-0")
         kalkon.tapAc()
@@ -42,7 +55,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testSignAfterDidOperation() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapOne()
         kalkon.tapPlus()
         kalkon.tapThree()
@@ -52,7 +65,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testNumericButtons() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapZero()
         XCTAssertEqual(kalkon.display, "0")
         kalkon.tapAc()
@@ -85,7 +98,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPlusEqualSign() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapTwo()
         kalkon.tapTwo()
         XCTAssertEqual(kalkon.display, "22", "tap 2 tap 2")
@@ -113,7 +126,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testKalkon22Plus3Equal25() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapTwo()
         XCTAssertEqual(kalkon.display, "2")
         kalkon.tapTwo()
@@ -129,7 +142,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testKalkonGrouping() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapTwo()
         kalkon.tapTwo()
         kalkon.tapTwo()
@@ -138,7 +151,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testEqual() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapZero()
         kalkon.tapDecimalSpeparator()
         kalkon.tapTwo()
@@ -147,7 +160,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPlus() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapZero()
         kalkon.tapDecimalSpeparator()
         kalkon.tapTwo()
@@ -156,7 +169,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testMinus() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapZero()
         kalkon.tapDecimalSpeparator()
         kalkon.tapTwo()
@@ -165,7 +178,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testMultiply2() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapAc()
         kalkon.tapZero()
         kalkon.tapDecimalSpeparator()
@@ -175,7 +188,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testMultiply() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapTwo()
         kalkon.tapMultiply()
         kalkon.tapFive()
@@ -190,7 +203,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testDivide() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapFive()
         kalkon.tapDivide()
         kalkon.tapFive()
@@ -216,7 +229,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testSeparator() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapDecimalSpeparator()
         XCTAssertEqual(kalkon.display, "0.")
         kalkon.tapZero()
@@ -226,7 +239,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPercentSum() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapNine()
         kalkon.tapZero()
         kalkon.tapPlus()
@@ -238,7 +251,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPercentageSubstraction() {
-        let k = Calculator()
+        let k = Calculator(DefaultCalculatorKeyboard())
         k.tapNine()
         k.tapZero()
         XCTAssertEqual(k.display, "90")
@@ -254,7 +267,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPercentageMultiplication() {
-        let k = Calculator()
+        let k = Calculator(DefaultCalculatorKeyboard())
         k.tapFive()
         k.tapZero()
         k.tapMultiply()
@@ -267,7 +280,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPercentageDivide() {
-        let k = Calculator()
+        let k = Calculator(DefaultCalculatorKeyboard())
         k.tapFive()
         k.tapZero()
         k.tapDivide()
@@ -280,7 +293,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPercentage() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapPercent()
         XCTAssertEqual(kalkon.display, "0")
         kalkon.tapAc()
@@ -290,7 +303,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testPercentageInput() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapNine()
         XCTAssertEqual(kalkon.display, "9")
         kalkon.tapPercent()
@@ -298,7 +311,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testDivideByZero() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapSeven()
         kalkon.tapDivide()
         kalkon.tapZero()
@@ -307,27 +320,27 @@ class KalkonTests: XCTestCase {
     }
     
     func testTapButton() {
-        let kalkon = Calculator()
-        XCTAssertEqual(kalkon.tapButtonWithTitle("0"), "0")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("ac"), "0")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("1"), "1")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("2"), "12")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("3"), "123")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("4"), "1 234")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("5"), "12 345")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("6"), "123 456")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("7"), "1 234 567")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("8"), "12 345 678")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("9"), "123 456 789")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("."), "123 456 789.")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("0"), "123 456 789.0")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("x"), "123 456 789 x")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("2"), "2")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("="), "246 913 578 =")
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("0"), "0")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("ac"), "0")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("1"), "1")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("2"), "12")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("3"), "123")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("4"), "1 234")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("5"), "12 345")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("6"), "123 456")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("7"), "1 234 567")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("8"), "12 345 678")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("9"), "123 456 789")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("."), "123 456 789.")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("0"), "123 456 789.0")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("x"), "123 456 789 x")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("2"), "2")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("="), "246 913 578 =")
     }
  
     func testDivideFloatingPoint() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapSeven()
         kalkon.tapDivide()
         kalkon.tapSix()
@@ -337,7 +350,7 @@ class KalkonTests: XCTestCase {
     }
     
     func testDivideFloatingPoint2() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapSeven()
         kalkon.tapDivide()
         kalkon.tapNine()
@@ -345,10 +358,14 @@ class KalkonTests: XCTestCase {
         kalkon.tapNine()
         kalkon.tapEqual()
         XCTAssertEqual(kalkon.display, "0.007007")
+        let left = NSDecimalNumber(mantissa: 7, exponent: 0, isNegative: false)
+        let right = NSDecimalNumber(mantissa: 999, exponent: 0, isNegative: false)
+        let result = left.dividing(by: right)
+        XCTAssertGreaterThanOrEqual(result.floatValue, 0.007007)
     }
     
     func testFloatingPointChangeMagnitude() {
-        let kalkon = Calculator()
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
         kalkon.tapSeven()
         kalkon.tapDecimalSpeparator()
         kalkon.tapSix()
@@ -360,53 +377,56 @@ class KalkonTests: XCTestCase {
         kalkon.tapZero()
         kalkon.tapEqual()
         XCTAssertEqual(kalkon.display, "76.723")
+        let left = NSDecimalNumber(mantissa: 76723, exponent: -4, isNegative: false)
+        let right = NSDecimalNumber(mantissa: 10, exponent: 0, isNegative: false)
+        let result = left.multiplying(by: right)
+        XCTAssertEqual(result.stringValue, "76.723")
     }
     
     func testCalculatorButtonWithTitleClicked() {
-        let kalkon = Calculator()
-        kalkon.tapButtonWithTitle("1")
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        kalkon.keyboard.tapButtonWithTitle("1")
         XCTAssertEqual(kalkon.display, "1")
-        kalkon.tapButtonWithTitle("+")
+        kalkon.keyboard.tapButtonWithTitle("+")
         XCTAssertEqual(kalkon.display, "1")
-        kalkon.tapButtonWithTitle("2")
+        kalkon.keyboard.tapButtonWithTitle("2")
         XCTAssertEqual(kalkon.display, "2")
-        kalkon.tapButtonWithTitle("=")
+        kalkon.keyboard.tapButtonWithTitle("=")
         XCTAssertEqual(kalkon.display, "3")
     }
     func testCalculatorButtonWithWronkTitleClicked() {
-        let kalkon = Calculator()
-        let result = kalkon.tapButtonWithTitle("k")
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        let result = kalkon.keyboard.tapButtonWithTitle("k")
         XCTAssertTrue(result.isEmpty)
     }
     
     func testCalculatorButtonWithTitleSign() {
-        let kalkon = Calculator()
-        kalkon.tapButtonWithTitle("1")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("+/-"), "-1")
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        kalkon.keyboard.tapButtonWithTitle("1")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("+/-"), "-1")
     }
     func testCalculatorButtonWithTitleDivide() {
-        let kalkon = Calculator()
-        kalkon.tapButtonWithTitle("6")
-        kalkon.tapButtonWithTitle("/")
-        kalkon.tapButtonWithTitle("3")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("="), "2 =")
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        kalkon.keyboard.tapButtonWithTitle("6")
+        kalkon.keyboard.tapButtonWithTitle("/")
+        kalkon.keyboard.tapButtonWithTitle("3")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("="), "2 =")
     }
     func testCalculatorButtonWithTitleMinus() {
-        let kalkon = Calculator()
-        kalkon.tapButtonWithTitle("5")
-        kalkon.tapButtonWithTitle("-")
-        kalkon.tapButtonWithTitle("1")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("="), "4 =")
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        kalkon.keyboard.tapButtonWithTitle("5")
+        kalkon.keyboard.tapButtonWithTitle("-")
+        kalkon.keyboard.tapButtonWithTitle("1")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("="), "4 =")
     }
     func testCalculatorButtonWithTitlePercent() {
-        let kalkon = Calculator()
-        kalkon.tapButtonWithTitle("5")
-        kalkon.tapButtonWithTitle("0")
-        kalkon.tapButtonWithTitle("+")
-        kalkon.tapButtonWithTitle("1")
-        kalkon.tapButtonWithTitle("0")
-        kalkon.tapButtonWithTitle("%")
-        XCTAssertEqual(kalkon.tapButtonWithTitle("="), "55 =")
+        let kalkon = Calculator(DefaultCalculatorKeyboard())
+        kalkon.keyboard.tapButtonWithTitle("5")
+        kalkon.keyboard.tapButtonWithTitle("0")
+        kalkon.keyboard.tapButtonWithTitle("+")
+        kalkon.keyboard.tapButtonWithTitle("1")
+        kalkon.keyboard.tapButtonWithTitle("0")
+        kalkon.keyboard.tapButtonWithTitle("%")
+        XCTAssertEqual(kalkon.keyboard.tapButtonWithTitle("="), "55 =")
     }
 }
-
